@@ -1,7 +1,7 @@
 workflow "New workflow" {
   on = "push"
   resolves = [
-    "Filters for GitHub Actions",
+    "Build",
   ]
 }
 
@@ -13,7 +13,7 @@ action "Filters for GitHub Actions" {
 action "Check" {
   uses = "./python-actions/setup"
   args = "check"
-  need = ["Filters for GitHub Actions"]
+  needs = ["Filters for GitHub Actions"]
 }
 
 action "Build" {
