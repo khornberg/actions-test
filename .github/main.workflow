@@ -10,10 +10,16 @@ action "Filters for GitHub Actions" {
   args = "branch master"
 }
 
+action "action-filter" {
+  uses = "actions/bin/filter@master"
+  args = "action synchronize"
+  needs = ["Filters for GitHub Actions"]
+}
+
 action "Check" {
   uses = "./python-actions/setup"
   args = "check"
-  needs = ["Filters for GitHub Actions"]
+  needs = ["action-filter"]
 }
 
 action "Build" {
