@@ -1,9 +1,15 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["python check"]
+  resolves = ["Build"]
 }
 
-action "python check" {
+action "Check" {
   uses = "./python-actions/setup"
   args = "check"
+}
+
+action "Build" {
+  uses = "./python-actions/setup"
+  args = "sdist bdist_wheel"
+  needs = ["Check"]
 }
