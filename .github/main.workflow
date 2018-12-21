@@ -1,12 +1,9 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["Hello World"]
+  resolves = ["python check"]
 }
 
-action "Hello World" {
-  uses = "./action-a"
-  env = {
-    MY_NAME = "Kyle"
-  }
-  args = "\"Hello world, I'm $MY_NAME!\""
+action "python check" {
+  uses = "./python-actions/setup"
+  args = "check"
 }
