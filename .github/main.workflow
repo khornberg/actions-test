@@ -18,7 +18,7 @@ action "Check" {
 
 action "Build" {
   uses = "./python-actions/setup"
-  args = "sdist bdist_wheel"
+  args = "sdist bdist"
   needs = ["Check"]
 }
 
