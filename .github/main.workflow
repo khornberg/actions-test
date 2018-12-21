@@ -24,4 +24,5 @@ action "GitHub Action for Python PyPi Twine" {
   uses = "./twine"
   needs = ["Build"]
   secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
+  args = "upload dist/*"
 }
