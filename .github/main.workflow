@@ -1,19 +1,11 @@
 workflow "New workflow" {
   on = "push"
-  resolves = [
-    "Build",
-  ]
-}
-
-action "Filters for GitHub Actions" {
-  uses = "actions/bin/filter@b2bea07"
-  args = "branch master"
+  resolves = ["GitHub Action for Python PyPi Twine"]
 }
 
 action "action-filter" {
   uses = "actions/bin/filter@master"
-  args = "action synchronize"
-  needs = ["Filters for GitHub Actions"]
+  args = "branch master"
 }
 
 action "Check" {
@@ -28,3 +20,8 @@ action "Build" {
   needs = ["Check"]
 }
 
+action "GitHub Action for Python PyPi Twine" {
+  uses = "./twine"
+  needs = ["Build"]
+  secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
+}
