@@ -3,11 +3,11 @@
 from distutils.core import setup
 
 setup(
-    name='ross-pypi-test',
-    version='0.2',
+    name='kh-pypi-test',
+    version='0.3',
     description='A trivial test project to upload to PyPi',
-    author='Ross McFarland',
-    author_email='ross@github.com',
-    url='https://github.com/ross/pypi',
-    packages=['ross_pypi_test'],
+    author='Kyle Hornberg',
+    author_email='kyle.hornberg@gmail.com',
+    url='https://github.com/khornberg/pypi',
+    packages=['kh_pypi_test'],
 )
