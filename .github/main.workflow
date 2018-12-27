@@ -9,7 +9,7 @@ action "action-filter" {
 }
 
 action "Check" {
-  uses = "./python-actions/setup"
+  uses = "ross/python-actions/setup-py/3.7@master"
   args = "check"
   needs = ["action-filter"]
 }
