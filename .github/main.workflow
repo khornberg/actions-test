@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["GitHub Action for Python PyPi Twine"]
+  resolves = ["PyPi Twine Upload"]
 }
 
 action "action-filter" {
@@ -16,13 +16,13 @@ action "Check" {
 
 action "Build" {
   uses = "khornberg/python-actions/setup-py/3.7@master"
-  args = "sdist bdist"
+  args = "sdist"
   needs = ["Check"]
 }
 
-action "GitHub Action for Python PyPi Twine" {
+action "PyPi Twine Upload" {
   uses = "khornberg/python-actions/twine@master"
   needs = ["Build"]
-  secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
   args = "upload dist/*"
+  secrets = ["TWINE_USERNAME", "TWINE_PASSWORD"]
 }
